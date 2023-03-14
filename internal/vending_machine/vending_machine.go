@@ -1,9 +1,9 @@
 package vending_machine
 
 import (
+	"log"
 	"strconv"
 	"strings"
-	"log"
 
 	"github.com/jroderic-07/vending-machine-api/pkg/error_catching"
 )
@@ -171,7 +171,7 @@ func (b *VendingMachine) BuyProduct(productPrice int) (string, map[string]int) {
 				change[coinType] += 1
 				changeRequired -= value
 			} else {
-				break	
+				break
 			}
 		}
 	}
