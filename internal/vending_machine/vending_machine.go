@@ -113,9 +113,9 @@ func (b *VendingMachine) DepositCoins(floats map[string]int) {
 	var err error
 	for _, coinType := range CoinTypes {
 		if coinType == "£2" {
-			b.credit += 200
+			b.credit += 200 * floats[coinType]
 		} else if coinType == "£1" {
-			b.credit += 100
+			b.credit += 100 * floats[coinType]
 		} else {
 			value = strings.TrimSuffix(coinType, "p")
 			valueInt, err = strconv.Atoi(value)
@@ -137,29 +137,36 @@ func (b *VendingMachine) BuyProduct(productPrice int) (string, map[string]int) {
 
 	changeRequired := b.credit - productPrice
 	change := make(map[string]int)
-	coinsCopy := b.coins
+	//coinsCopy := b.coins
+	
+	coinsCopy := make(map[string]int)
+	for key, value := range b.coins {
+		coinsCopy[key] = value
+	}
+
 	var value int
 	var valueStr string
 	var err error
 
 	for _, coinType := range CoinTypes {
 		if coinType == "£2" {
-			value = 200
+			value = 200 
 		} else if coinType == "£1" {
 			value = 100
 		} else {
 			valueStr = strings.TrimSuffix(coinType, "p")
 			value, err = strconv.Atoi(valueStr)
 			if err != nil {
+				value = 0
 				continue
 			}
 		}
 
-		for changeRequired >= value {
-			if coinsCopy[coinType] != 0 {
+		if changeRequired >= value {
+			if coinsCopy[coinType] > 0 {
 				coinsCopy[coinType] -= 1
-				change[coinType] = change[coinType] + 1
-				changeRequired = changeRequired - value
+				change[coinType] += 1
+				changeRequired -= value
 			}
 		}
 	}

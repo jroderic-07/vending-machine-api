@@ -92,6 +92,7 @@ func (a *api) getCredit(w http.ResponseWriter, r *http.Request) {
 	a.log(r)
 
 	json.NewEncoder(w).Encode(float64(a.vendingMachine.GetCredit())/100)
+
 }
 
 func (a *api) buyProduct(w http.ResponseWriter, r *http.Request) {
