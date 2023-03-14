@@ -116,7 +116,7 @@ Erroneous (coin deposit)
 Test will not run
 ```bash
 ./bin/test-harness -coin-deposit z,z,z,z
-
+```
 
 ## API Endpoints
 Home page.
