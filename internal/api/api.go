@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"vending/internal/vending_machine"
+	"github.com/jroderic-07/vending-machine-api/internal/vending_machine"
 
 	"github.com/gorilla/mux"
 )

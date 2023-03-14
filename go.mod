@@ -1,4 +1,4 @@
-module vending
+module github.com/jroderic-07/vending-machine-api
 
 go 1.18
 

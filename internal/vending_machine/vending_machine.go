@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"strings"
 
-	"vending/pkg/error_catching"
+	"github.com/jroderic-07/vending-machine-api/pkg/error_catching"
 )
 
 var CoinTypes = []string{"£2", "£1", "50p", "20p", "10p", "5p", "2p", "1p"}

@@ -6,9 +6,9 @@ import (
 	"runtime"
 	"strings"
 
-	"vending/internal/api"
-	"vending/internal/vending_machine"
-	"vending/pkg/error_catching"
+	"github.com/jroderic-07/vending-machine-api/internal/api"
+	"github.com/jroderic-07/vending-machine-api/internal/vending_machine"
+	"github.com/jroderic-07/vending-machine-api/pkg/error_catching"
 )
 
 type arrayFlags []string
