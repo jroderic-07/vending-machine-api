@@ -9,7 +9,7 @@ Further functionality has also been implemented to add more usability when using
 ## Installation
 To install this project, clone this repository and use the Makefile:
 ```bash
-git clone https://github.com/jroderic-07/coding-challenge.git
+git clone https://github.com/jroderic-07/vending-machine-api.git
 make vending
 ```
 
@@ -122,5 +122,23 @@ Get credit, in other words how much money you have deposited, that can be used t
 GET /credit
 ```
 
+## Design Decisions
+I decided to use Go for this task, my reasons being:
+- It is the programming language that I am most comfortable using.
+- It is has a relatively simple syntax, meaning that less time is spent worrying about syntax and more time is spent actually implementing features.
+- There is a comprehensive standard library. This is useful in corporate setting where CSSAP approvals are an issue.
+- It compiles and runs very quickly.
+- It has a large amount of community support.
+
+I decided to implement a REST API for this task, my reasons being:
+- 
+
+I followed this un-official project structure standard: https://github.com/golang-standards/project-layout
+
 ## Dependencies
+- A Unix-like system
 - Go
+
+## References
+- https://github.com/golang-standards/project-layout
+- https://refactoring.guru/design-patterns/go 
