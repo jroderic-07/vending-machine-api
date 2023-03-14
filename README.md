@@ -59,7 +59,7 @@ To compile the binary, run:
 make test-harness
 ```
 
-Ensure that the vending machine API is running on port 9090 before using the binary.
+Ensure that the vending machine API is running on port 9090 in another terminal tab/window before using the test harness binary.
 
 If you run the binary without any arguments, by default ten of each coin are passed as an initial float, the product added is coke for 1.50, and one of each coin is deposited.
 ```bash
@@ -178,9 +178,16 @@ I decided to use Go for this task, my reasons being:
 - It has a large amount of community support.
 
 I decided to implement a REST API for this task, my reasons being:
-- 
+- It is the most popular communication standard at the moment.
+- They are simple to implement.
+- They are scalable.
+- It is seperates out components of the system. In this project, the API and vending machine components are completely decoupled, meaning that they can be worked on independently and easily debugged. 
+I followed this un-official project structure standard: https://github.com/golang-standards/project-layout.
 
-I followed this un-official project structure standard: https://github.com/golang-standards/project-layout
+I included a makfile in this repo that can create two binaries: the vending machine and the test harnenss.
+The makefile compiles these files: in cmd/vending/main.go or /cmd/test_harness/main.go.
+The main.go file creates a vending machine object, and then an API object passing the vending machine object as a parameter.
+The vending machine object is created using a builder design pattern.
 
 ## Dependencies
 - A Unix-like system

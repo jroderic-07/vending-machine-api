@@ -138,7 +138,7 @@ func (b *VendingMachine) BuyProduct(productPrice int) (string, map[string]int) {
 	changeRequired := b.credit - productPrice
 	change := make(map[string]int)
 	//coinsCopy := b.coins
-	
+
 	coinsCopy := make(map[string]int)
 	for key, value := range b.coins {
 		coinsCopy[key] = value
@@ -150,7 +150,7 @@ func (b *VendingMachine) BuyProduct(productPrice int) (string, map[string]int) {
 
 	for _, coinType := range CoinTypes {
 		if coinType == "£2" {
-			value = 200 
+			value = 200
 		} else if coinType == "£1" {
 			value = 100
 		} else {
