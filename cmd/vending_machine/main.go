@@ -48,6 +48,6 @@ func main() {
 	director := vending_machine.NewDirector(vendingMachineBuilder)
 	vendingMachine := director.BuildVendingMachine(floatList, productList)
 
-	restApi := api.New(vendingMachine, *port)
+	restApi := api.New(&vendingMachine, *port)
 	restApi.ServeAPI()
 }

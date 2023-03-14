@@ -15,7 +15,7 @@ import (
 type api struct {
 	router         mux.Router
 	port           string
-	vendingMachine vending_machine.VendingMachine
+	vendingMachine *vending_machine.VendingMachine
 }
 
 func (a *api) log(r *http.Request) {
@@ -91,7 +91,7 @@ func (a *api) depositCoins(w http.ResponseWriter, r *http.Request) {
 func (a *api) getCredit(w http.ResponseWriter, r *http.Request) {
 	a.log(r)
 
-	json.NewEncoder(w).Encode(float64(a.vendingMachine.GetCredit())/100)
+	json.NewEncoder(w).Encode(float64(a.vendingMachine.GetCredit()) / 100)
 
 }
 
@@ -144,7 +144,7 @@ func (a *api) setPort(port string) *api {
 	return a
 }
 
-func (a *api) setVendingMachine(vendingMachine vending_machine.VendingMachine) *api {
+func (a *api) setVendingMachine(vendingMachine *vending_machine.VendingMachine) *api {
 	a.vendingMachine = vendingMachine
 	return a
 }
@@ -154,7 +154,7 @@ func (a *api) ServeAPI() {
 	log.Fatal(http.ListenAndServe(a.port, &a.router))
 }
 
-func New(vendingMachineArgument vending_machine.VendingMachine, portArgument string) *api {
+func New(vendingMachineArgument *vending_machine.VendingMachine, portArgument string) *api {
 	api := &api{}
 	return api.createAPI().setPort(portArgument).setVendingMachine(vendingMachineArgument)
 }

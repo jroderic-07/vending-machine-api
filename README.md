@@ -59,7 +59,7 @@ To compile the binary, run:
 make test-harness
 ```
 
-Ensure that the vending machine API is running on port 9090 before using the binary.
+Ensure that the vending machine API is running on port 9090 in another terminal tab/window before using the test harness binary.
 
 If you run the binary without any arguments, by default ten of each coin are passed as an initial float, the product added is coke for 1.50, and one of each coin is deposited.
 ```bash
@@ -73,12 +73,12 @@ For more information about the command line arguments:
 
 ## Tests
 # Test harness
-Default (expected)
+Default (expected input)
 ```bash
 ./bin/test-harness
 ```
 
-Expected
+Expected input
 ```bash
 ./bin/test-harness -initial-float 10,10,10,5,4,3,2,5 -product-name fanta -product-price 3 -coin-deposit 1,0,3,2,0,0,0,0
 ```
@@ -92,12 +92,13 @@ Transaction will not go ahead
 In-sufficient change
 Transaction will not go ahead
 ```bash
-./bin/test-harness -initial-float 1,1,0,0,0,0,5,5 -product-name fanta -product-price 3 -coin-deposit 2,1,1,1,0,0,0,0
+./bin/test-harness -initial-float 10,0,0,0,0,0,0,0 -product-name fanta -product-price 3.5 -coin-deposit 2,0,0,0,0,0,0,0
 ```
 
 In-sufficient change
+Transaction will not go ahead
 ```bash
-./bin/test-harness -initial-float 10,0,0,0,0,0,0,0 -product-name fanta -product-price 3.5 -coin-deposit 2,0,0,0,0,0,0,0
+./bin/test-harness -initial-float 100,0,0,0,0,0,0,0 -product-name fanta -product-price 3.5 -coin-deposit 2,1,0,1,1,1,1,1
 ```
 
 Erroneous (product price)
@@ -116,7 +117,7 @@ Erroneous (coin deposit)
 Test will not run
 ```bash
 ./bin/test-harness -coin-deposit z,z,z,z
-
+```
 
 ## API Endpoints
 Home page.
@@ -178,9 +179,16 @@ I decided to use Go for this task, my reasons being:
 - It has a large amount of community support.
 
 I decided to implement a REST API for this task, my reasons being:
-- 
+- It is the most popular communication standard at the moment.
+- They are simple to implement.
+- They are scalable.
+- It is seperates out components of the system. In this project, the API and vending machine components are completely decoupled, meaning that they can be worked on independently and easily debugged. 
+I followed this un-official project structure standard: https://github.com/golang-standards/project-layout.
 
-I followed this un-official project structure standard: https://github.com/golang-standards/project-layout
+I included a makfile in this repo that can create two binaries: the vending machine and the test harnenss.
+The makefile compiles these files: in cmd/vending/main.go or /cmd/test_harness/main.go.
+The main.go file creates a vending machine object, and then an API object passing the vending machine object as a parameter.
+The vending machine object is created using a builder design pattern.
 
 ## Dependencies
 - A Unix-like system
