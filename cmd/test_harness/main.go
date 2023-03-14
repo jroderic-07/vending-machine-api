@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"regexp"
+	"strconv"
 )
 
 func checkRegex(str string) {
@@ -36,6 +37,11 @@ func main() {
 
 	checkRegex(*initialFloat)
 	checkRegex(*coinDeposit)
+
+	_, err := strconv.ParseFloat(*productPrice, 64)
+	if err != nil {
+		log.Fatal("Invalid price")
+	}
 
 	client := &http.Client{}
 
