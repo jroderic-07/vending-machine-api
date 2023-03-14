@@ -3,6 +3,7 @@ package vending_machine
 import (
 	"strconv"
 	"strings"
+	"log"
 
 	"github.com/jroderic-07/vending-machine-api/pkg/error_catching"
 )
@@ -135,9 +136,11 @@ func (b *VendingMachine) BuyProduct(productPrice int) (string, map[string]int) {
 		return "Insufficient funds", nil
 	}
 
+	log.Println(b.credit)
+	log.Println(productPrice)
+
 	changeRequired := b.credit - productPrice
 	change := make(map[string]int)
-	//coinsCopy := b.coins
 
 	coinsCopy := make(map[string]int)
 	for key, value := range b.coins {
@@ -162,11 +165,13 @@ func (b *VendingMachine) BuyProduct(productPrice int) (string, map[string]int) {
 			}
 		}
 
-		if changeRequired >= value {
-			if coinsCopy[coinType] > 0 {
+		for changeRequired >= value {
+			if coinsCopy[coinType] != 0 {
 				coinsCopy[coinType] -= 1
 				change[coinType] += 1
 				changeRequired -= value
+			} else {
+				break	
 			}
 		}
 	}

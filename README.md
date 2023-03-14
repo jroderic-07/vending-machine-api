@@ -73,12 +73,12 @@ For more information about the command line arguments:
 
 ## Tests
 # Test harness
-Default (expected)
+Default (expected input)
 ```bash
 ./bin/test-harness
 ```
 
-Expected
+Expected input
 ```bash
 ./bin/test-harness -initial-float 10,10,10,5,4,3,2,5 -product-name fanta -product-price 3 -coin-deposit 1,0,3,2,0,0,0,0
 ```
@@ -92,12 +92,13 @@ Transaction will not go ahead
 In-sufficient change
 Transaction will not go ahead
 ```bash
-./bin/test-harness -initial-float 1,1,0,0,0,0,5,5 -product-name fanta -product-price 3 -coin-deposit 2,1,1,1,0,0,0,0
+./bin/test-harness -initial-float 10,0,0,0,0,0,0,0 -product-name fanta -product-price 3.5 -coin-deposit 2,0,0,0,0,0,0,0
 ```
 
 In-sufficient change
+Transaction will not go ahead
 ```bash
-./bin/test-harness -initial-float 10,0,0,0,0,0,0,0 -product-name fanta -product-price 3.5 -coin-deposit 2,0,0,0,0,0,0,0
+./bin/test-harness -initial-float 100,0,0,0,0,0,0,0 -product-name fanta -product-price 3.5 -coin-deposit 2,1,0,1,1,1,1,1
 ```
 
 Erroneous (product price)
