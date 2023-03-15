@@ -202,5 +202,6 @@ The vending machine object is created using a builder design pattern.
 - Go 1.18.2
 
 ## References
+- https://www.digitalocean.com/community/tutorials/how-to-install-go-on-ubuntu-20-04
 - https://github.com/golang-standards/project-layout
 - https://refactoring.guru/design-patterns/go 
