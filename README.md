@@ -73,6 +73,13 @@ For more information about the command line arguments:
 
 ## Tests
 # Test harness
+First, run the vending binary on port 9090
+```bash
+make vending
+make test-harness
+./bin/vending -port :9090
+```
+
 Default (expected input)
 ```bash
 ./bin/test-harness
