@@ -36,8 +36,9 @@ func main() {
 
 	flag.Parse()
 
-	if error_catching.CheckPort(*port) == false {
-		log.Fatalln("Port already in use")
+	portAvailable, err := error_catching.CheckPort(*port)
+	if portAvailable == false {
+		log.Fatalln(err)
 	}
 
 	if *cpuNum != 0 {

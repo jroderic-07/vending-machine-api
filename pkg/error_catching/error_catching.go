@@ -6,15 +6,15 @@ import (
 	"regexp"
 )
 
-func CheckPort(port string) bool {
+func CheckPort(port string) (bool, error) {
 	ln, err := net.Listen("tcp", port)
 
 	if err != nil {
-		return false
+		return false, err
 	}
 
 	_ = ln.Close()
-	return true
+	return true, err
 }
 
 func CheckPattern(element string) bool {
