@@ -199,7 +199,7 @@ The vending machine object is created using a builder design pattern.
 
 ## Dependencies
 - A Unix-like system
-- Go
+- Go 1.18.2
 
 ## References
 - https://github.com/golang-standards/project-layout
